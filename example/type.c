@@ -9,8 +9,7 @@ int main(int argc, char *argv[]) {
     _PRINT_TYPE_(const_char_ptr);
     _PRINT_TYPE_(float32_t);
     _PRINT_TYPE_(float64_t);
-    _PRINT_TYPE_(float96_t);
-    _PRINT_TYPE_(floatmin_t);
+    //_PRINT_TYPE_(float96_t);
     _PRINT_TYPE_(floatmax_t);
     _PRINT_TYPE_(size_t);
     _PRINT_TYPE_(ssize_t);
