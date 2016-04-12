@@ -29,46 +29,43 @@ extern "C" {
 #   define nil NULL
 #endif
 
-//using ::size_t;
+typedef size_t vic_size_t;
 #ifdef _VIC_WINDOWS_
 #   ifdef _VIC_IS_64_BITS_
-        typedef long ssize_t;
+        typedef long vic_ssize_t;
 #   elif defined(_VIC_IS_32_BITS_)
-        typedef int ssize_t;
+        typedef int vic_ssize_t;
 #   endif
 #else
-//using ::ssize_t;
+typedef ssize_t vic_ssize_t;
 #endif
-//using ::ptrdiff_t;
-//using ::off_t;
-//using ::time_t;
+typedef ptrdiff_t vic_ptrdiff_t;
+typedef off_t vic_off_t;
+typedef time_t vic_time_t;
 
-typedef uint32_t line_t;
-typedef uint8_t byte_t;
-typedef size_t iov_len_t;
-typedef int32_t fd_t;
-#define vic_invalid_fd -1
+typedef uint32_t vic_line_t;
+typedef uint8_t vic_byte_t;
+typedef size_t vic_iov_len_t;
+typedef int32_t vic_file_t;
+#define vic_invalid_file ((vic_file_t)-1)
 
-typedef fd_t socket_t;
-#define vic_invalid_socket vic_invalid_fd
+typedef vic_file_t vic_socket_t;
+#define vic_invalid_socket vic_invalid_file
 
 #ifdef _VIC_WINDOWS_
-    typedef unsigned int pid_t;
-    typedef unsigned int tid_t;
+    typedef uint32_t vic_pid_t;
+    typedef uint32_t vic_tid_t;
 #else
-    //using ::pid_t; // Process ID
-    typedef pid_t tid_t; // Thread ID
+    typedef pid_t vic_pid_t; // Process ID
+    typedef pid_t vic_tid_t; // Thread ID
 #endif
 
-//typedef size_t fls_key_t;
+//typedef size_t vic_fls_key_t;
 
 #ifdef _VIC_WINDOWS_
-    typedef DWORD error_t;
+    typedef DWORD vic_error_t;
 #else
-#   ifndef __error_t_defined
-        typedef int32_t error_t;
-#       define __error_t_defined 1
-#   endif
+    typedef int32_t vic_error_t;
 #endif
 
 #ifdef	__cplusplus

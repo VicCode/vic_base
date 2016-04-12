@@ -10,7 +10,15 @@
 
 #include <vic/base/type.h>
 
-error_t vic_last_error();
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
-void vic_set_last_error(error_t e);
+vic_error_t vic_last_error();
+
+void vic_set_last_error(vic_error_t e);
+
+#ifdef	__cplusplus
+}
+#endif
 
