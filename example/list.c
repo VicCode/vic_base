@@ -18,7 +18,8 @@ void demo_destroy(demo *val) {
 }
 
 void print(const vic_list_t *l) {
-    for (vic_list_node_t *node = vic_list_begin(l); node != vic_list_end(l); node = vic_list_next(node)) {
+    vic_list_node_t *node;
+    for (node = vic_list_begin(l); node != vic_list_end(l); node = vic_list_next(node)) {
         demo *d = vic_list_data(node, demo, node);
         printf("(%d %d)", d->a, d->b);
     }
@@ -26,7 +27,8 @@ void print(const vic_list_t *l) {
 }
 
 void rprint(const vic_list_t *l) {
-    for (vic_list_node_t *node = vic_list_rbegin(l); node != vic_list_rend(l); node = vic_list_rnext(node)) {
+    vic_list_node_t *node;
+    for (node = vic_list_rbegin(l); node != vic_list_rend(l); node = vic_list_rnext(node)) {
         demo *d = vic_list_data(node, demo, node);
         printf("(%d %d)", d->a, d->b);
     }
