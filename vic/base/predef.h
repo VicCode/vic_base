@@ -122,6 +122,8 @@ extern "C" {
 #define _VIC_STRING_(val) #val
 #define _VIC_JOIN_(X, Y) X##Y
 
+#define vic_offsetof(__type, __member) offsetof(__type, __member)
+
 #ifdef	__cplusplus
 }
 #endif
