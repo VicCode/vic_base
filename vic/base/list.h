@@ -35,6 +35,17 @@ struct vic_list {
 #define vic_list_empty(__list) \
     ((__list)->_node._next == &(__list)->_node)
 
+#define vic_list_swap(__lista, __listb) \
+    ({ \
+        vic_list_node_t __tmp = (__lista)->_node; \
+        (__lista)->_node = (__listb)->_node; \
+        (__listb)->_node = __tmp; \
+    })
+
+#define vic_list_clear(__list) \
+    (__list)->_node._prev = &(__list)->_node; \
+    (__list)->_node._next = &(__list)->_node
+
 inline static void vic_list_insert(vic_list_node_t *__position_node, vic_list_node_t *__node) {
     __node->_next = __position_node;
     __node->_prev = __position_node->_prev;
