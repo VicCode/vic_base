@@ -43,6 +43,10 @@ int main(int argc, char *argv[]) {
     vic_forward_list_push_front(&l, &d2.node);
     print(&l);
 
+    vic_forward_list_node_t *node = vic_forward_list_front(&l);
+    demo *d = vic_forward_list_data(node, demo, node);
+    printf("front: (%d %d)\n", d->a, d->b);
+
     vic_forward_list_erase_after(vic_forward_list_begin(&l));
     print(&l);
     vic_forward_list_pop_front(&l);

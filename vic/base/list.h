@@ -46,6 +46,10 @@ struct vic_list {
     (__list)->_node._prev = &(__list)->_node; \
     (__list)->_node._next = &(__list)->_node
 
+#define vic_list_front(__list) ((__list)->_node._next)
+
+#define vic_list_back(__list) ((__list)->_node._prev)
+
 inline static void vic_list_insert(vic_list_node_t *__position_node, vic_list_node_t *__node) {
     __node->_next = __position_node;
     __node->_prev = __position_node->_prev;
@@ -64,19 +68,9 @@ inline static void vic_list_erase(vic_list_node_t *__node) {
     __node->_next = nil;
 }
 
-#define vic_list_pop_front(__list) \
-    ({ \
-        vic_list_node_t *node = (__list)->_node._next; \
-        vic_list_erase(node); \
-        node; /* return current node */ \
-    })
+#define vic_list_pop_front(__list) vic_list_erase((__list)->_node._next)
 
-#define vic_list_pop_back(__list) \
-    ({ \
-        vic_list_node_t *node = (__list)->_node._prev; \
-        vic_list_erase(node); \
-        node; /* return current node */ \
-    })
+#define vic_list_pop_back(__list) vic_list_erase((__list)->_node._prev)
 
 // iteration
 #define vic_list_begin(__list) (__list)->_node._next

@@ -42,6 +42,8 @@ struct vic_forward_list {
 #define vic_forward_list_clear(__list) \
     (__list)->_node._next = nil
 
+#define vic_forward_list_front(__list) vic_forward_list_before_begin(__list)->_next
+
 inline static void vic_forward_list_insert_after(vic_forward_list_node_t *__position_node, vic_forward_list_node_t *__node) {
     __node->_next = __position_node->_next;
     __position_node->_next = __node;
@@ -55,11 +57,7 @@ inline static void vic_forward_list_erase_after(vic_forward_list_node_t *__node)
 }
 
 #define vic_forward_list_pop_front(__list) \
-    ({ \
-        vic_forward_list_node_t *node = vic_forward_list_before_begin(__list)->_next; \
-        vic_forward_list_erase_after(vic_forward_list_before_begin(__list)); \
-        node; /* return current node */ \
-    })
+    vic_forward_list_erase_after(vic_forward_list_before_begin(__list))
 
 // iteration
 #define vic_forward_list_before_begin(__list) (&(__list)->_node)

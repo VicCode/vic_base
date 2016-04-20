@@ -59,6 +59,14 @@ int main(int argc, char *argv[]) {
 
     rprint(&l);
 
+    vic_list_node_t *node = vic_list_front(&l);
+    demo *d = vic_list_data(node, demo, node);
+    printf("front: (%d %d)\n", d->a, d->b);
+
+    node = vic_list_back(&l);
+    d = vic_list_data(node, demo, node);
+    printf("back: (%d %d)\n", d->a, d->b);
+
     vic_list_pop_front(&l);
     print(&l);
     vic_list_pop_back(&l);
