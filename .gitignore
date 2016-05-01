@@ -36,3 +36,4 @@ lib/*
 bin/*
 tarball/*
 tarball.tar.gz
+.idea
